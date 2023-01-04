@@ -215,6 +215,13 @@ let asyncTest = Promise.resolve();
   ok(!eventTarget.dispatchEvent(event));
 }
 {
+  const eventTarget = new EventTarget();
+  const event = new Event('foo', { cancelable: true });
+  const fn = common.mustCall((event) => strictEqual(event.type, 'foo'));
+  eventTarget.addEventListener('foo', fn);
+  ok(!eventTarget.dispatchEvent(event));
+}
+{
   // Adding event listeners with a boolean useCapture
   const eventTarget = new EventTarget();
   const event = new Event('foo');

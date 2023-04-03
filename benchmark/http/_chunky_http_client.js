@@ -63,13 +63,13 @@ function main({ len, n }) {
       let pattern = 'HTTP/1.1 200 OK\r\n';
       if ((d.length === pattern.length && d === pattern) ||
           (d.length > pattern.length &&
-           d.slice(0, pattern.length) === pattern)) {
+           d.subarray(0, pattern.length) === pattern)) {
         did = true;
       } else {
         pattern = 'HTTP/1.1 ';
         if ((d.length === pattern.length && d === pattern) ||
             (d.length > pattern.length &&
-             d.slice(0, pattern.length) === pattern)) {
+             d.subarray(0, pattern.length) === pattern)) {
           did = true;
         }
       }
